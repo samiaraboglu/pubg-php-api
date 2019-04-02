@@ -1,0 +1,25 @@
+{
+    "name": "samiaraboglu/pubg-php-api",
+    "type": "library",
+    "description": "",
+    "keywords": ["php", "pubg", "pubg-api", "pubg-php"],
+    "homepage": "https://github.com/samiaraboglu/pubg-php-api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sami Araboğlu",
+            "email": "samiaraboglu@gmail.com",
+            "homepage": "https://github.com/samiaraboglu",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pubg\\": "src"
+        }
+    }
+}
