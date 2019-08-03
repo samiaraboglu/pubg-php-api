@@ -1,4 +1,9 @@
 # pubg-php-api
+
+[![Latest Stable Version](https://poser.pugx.org/samiaraboglu/pubg-php-api/v/stable)](https://packagist.org/packages/samiaraboglu/pubg-php-api)
+[![Total Downloads](https://poser.pugx.org/samiaraboglu/pubg-php-api/downloads)](https://packagist.org/packages/samiaraboglu/pubg-php-api)
+[![License](https://poser.pugx.org/samiaraboglu/pubg-php-api/license)](https://packagist.org/packages/samiaraboglu/pubg-php-api)
+
 PlayerUnknown's Battlegrounds Php Api
 
 - [PUBG Official Documentation](https://documentation.pubg.com/en/introduction.html)
