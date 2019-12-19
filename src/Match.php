@@ -48,7 +48,7 @@ Class Match
      */
     public function get($matchId)
     {
-        $data = $this->api->request(sprintf('/shards/{platform}/matches/%s', $matchId))['data'];
+        $data = $this->api->request(sprintf('/shards/{platform}/matches/%s', $matchId));
 
         $data['id'] = $matchId;
 
