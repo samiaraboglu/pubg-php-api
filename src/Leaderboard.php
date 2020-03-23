@@ -42,14 +42,15 @@ Class Leaderboard
     /**
      * Get the leaderboards
      *
+     * @param string $seasonId
      * @param string $gameMode
      * @param int $pageNumber
      *
      * @return Leaderboard
      */
-    public function get($gameMode, $pageNumber = null)
+    public function get($seasonId, $gameMode, $pageNumber = null)
     {
-        $path = sprintf('/shards/{platform}/leaderboards/%s', $gameMode);
+        $path = sprintf('/shards/{platform}/leaderboards/%s/%s', $seasonId, $gameMode);
 
         if (!is_null($pageNumber)) {
             $path .= sprintf('?page[number]=%d', $pageNumber);
