@@ -27,9 +27,9 @@ Class Season
      *
      * @param array $data
      *
-     * @return Season
+     * @return SeasonObject
      */
-    public function populate($data)
+    public function populate(array $data): SeasonObject
     {
         $season = new SeasonObject();
 
@@ -44,12 +44,21 @@ Class Season
      *
      * @param string $accountId
      * @param string $seasonId
-     *
-     * @return Season
+     * @param bool $ranked
+     * @return SeasonObject
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get($accountId, $seasonId)
+    public function get(string $accountId, string $seasonId, $ranked = false): SeasonObject
     {
-        $data = $this->api->request(sprintf('/shards/{platform}/players/%s/seasons/%s', $accountId, $seasonId))['data'];
+        $rankedPath = $ranked ? '/ranked' : '';
+
+        $data = $this->api->request(
+            sprintf(
+                '/shards/{platform}/players/%s/seasons/%s' . $rankedPath,
+                $accountId,
+                $seasonId
+            )
+        )['data'];
 
         $data['id'] = $seasonId;
 
@@ -57,11 +66,44 @@ Class Season
     }
 
     /**
+     * @see https://documentation.pubg.com/en/seasons-endpoint.html#/Season_Stats/get_seasons__seasonId__gameMode__gameMode__players
+     * @param array $accountIds
+     * @param string $seasonId
+     * @param string $gameMode
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return Object\Season[]
+     */
+    public function getBatch(array $accountIds, string $seasonId, string $gameMode): array
+    {
+        $accountIdsQuery = '?filter[playerIds]=' . implode(',', $accountIds);
+
+        $data = $this->api->request(
+            sprintf(
+                '/shards/{platform}/seasons/%s/gameMode/%s/players' . $accountIdsQuery,
+                $seasonId,
+                $gameMode
+            )
+        )['data'];
+
+        $seasons = [];
+
+        foreach ($data as $value) {
+            $value['id'] = $seasonId;
+            $season = $this->populate($value);
+
+            $seasons[] = $season;
+        }
+
+        return $seasons;
+    }
+
+    /**
      * Get all seasons
      *
-     * @return array
+     * @return Object\Season[]
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getAll()
+    public function getAll(): array
     {
         $data = $this->api->request('/shards/{platform}/seasons')['data'];
 

@@ -27,9 +27,9 @@ Class Player
      *
      * @param array $data
      *
-     * @return Player
+     * @return PlayerObject
      */
-    public function populate($data)
+    public function populate(array $data): PlayerObject
     {
         $player = new PlayerObject();
 
@@ -45,9 +45,10 @@ Class Player
      *
      * @param string $playerName
      *
-     * @return Player
+     * @return PlayerObject
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get($playerName)
+    public function get(string $playerName): PlayerObject
     {
         if (strpos($playerName, 'account.') !== false) {
             $data = $this->api->request(sprintf('/shards/{platform}/players/%s', $playerName))['data'];
@@ -64,8 +65,9 @@ Class Player
      * @param string $playerNames
      *
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getAll($playerNames)
+    public function getAll(string $playerNames): array
     {
         if (strpos($playerNames[0], 'account.') !== false) {
             $key = 'playerIds';

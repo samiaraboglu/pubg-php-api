@@ -14,7 +14,7 @@ Class Lifetime
      *
      * @param array $data
      */
-    public function setData($data)
+    public function setData(array $data)
     {
         $this->data = $data;
     }
@@ -24,7 +24,7 @@ Class Lifetime
      *
      * @return array
      */
-    public function getData()
+    public function getData(): array
     {
         return $this->data;
     }

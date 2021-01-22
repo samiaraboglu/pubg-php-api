@@ -5,7 +5,7 @@ namespace Pubg\Object;
 Class Season
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -17,9 +17,9 @@ Class Season
     /**
      * Set id
      *
-     * @param int $id
+     * @param string $id
      */
-    public function setId($id)
+    public function setId(string $id)
     {
         $this->id = $id;
     }
@@ -27,9 +27,9 @@ Class Season
     /**
      * Get id
      *
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -39,7 +39,7 @@ Class Season
      *
      * @param array $data
      */
-    public function setData($data)
+    public function setData(array $data)
     {
         $this->data = $data;
     }
@@ -49,7 +49,7 @@ Class Season
      *
      * @return array
      */
-    public function getData()
+    public function getData(): array
     {
         return $this->data;
     }

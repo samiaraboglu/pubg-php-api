@@ -27,9 +27,9 @@ Class Leaderboard
      *
      * @param array $data
      *
-     * @return Leaderboard
+     * @return LeaderboardsObject
      */
-    public function populate($data)
+    public function populate(array $data): LeaderboardsObject
     {
         $leaderboard = new LeaderboardsObject();
 
@@ -44,11 +44,11 @@ Class Leaderboard
      *
      * @param string $seasonId
      * @param string $gameMode
-     * @param int $pageNumber
-     *
-     * @return Leaderboard
+     * @param null|string|integer $pageNumber
+     * @return LeaderboardsObject
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get($seasonId, $gameMode, $pageNumber = null)
+    public function get(string $seasonId, string $gameMode, $pageNumber = null): LeaderboardsObject
     {
         $path = sprintf('/shards/{platform}/leaderboards/%s/%s', $seasonId, $gameMode);
 

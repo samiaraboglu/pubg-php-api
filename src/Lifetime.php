@@ -27,9 +27,9 @@ Class Lifetime
      *
      * @param array $data
      *
-     * @return Lifetime
+     * @return LifetimeObject
      */
-    public function populate($data)
+    public function populate(array $data): LifetimeObject
     {
         $lifetime = new LifetimeObject();
 
@@ -43,9 +43,10 @@ Class Lifetime
      *
      * @param string $accountId
      *
-     * @return Lifetime
+     * @return LifetimeObject
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get($accountId)
+    public function get(string $accountId): LifetimeObject
     {
         $data = $this->api->request(sprintf('/shards/{platform}/players/%s/seasons/lifetime', $accountId))['data'];
 

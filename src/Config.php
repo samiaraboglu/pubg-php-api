@@ -19,7 +19,7 @@ Class Config
      *
      * @param string $apiKey
      */
-    public function setApiKey($apiKey)
+    public function setApiKey(string $apiKey)
     {
         $this->apiKey = $apiKey;
     }
@@ -28,7 +28,7 @@ Class Config
      *
      * @return string
      */
-    public function getApiKey()
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }
@@ -38,7 +38,7 @@ Class Config
      *
      * @param string $platform
      */
-    public function setPlatform($platform)
+    public function setPlatform(string $platform)
     {
         $this->platform = $platform;
     }
@@ -47,7 +47,7 @@ Class Config
      *
      * @return string
      */
-    public function getPlatform()
+    public function getPlatform(): string
     {
         return $this->platform;
     }
