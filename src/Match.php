@@ -27,9 +27,9 @@ Class Match
      *
      * @param array $data
      *
-     * @return Match
+     * @return MatchObject
      */
-    public function populate($data)
+    public function populate(array $data): MatchObject
     {
         $match = new MatchObject();
 
@@ -44,9 +44,10 @@ Class Match
      *
      * @param string $matchId
      *
-     * @return Match
+     * @return MatchObject
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get($matchId)
+    public function get(string $matchId): MatchObject
     {
         $data = $this->api->request(sprintf('/shards/{platform}/matches/%s', $matchId));
 

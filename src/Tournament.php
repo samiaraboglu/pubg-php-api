@@ -27,9 +27,9 @@ Class Tournament
      *
      * @param array $data
      *
-     * @return Tournament
+     * @return TournamentObject
      */
-    public function populate($data)
+    public function populate(array $data): TournamentObject
     {
         $tournament = new TournamentObject();
 
@@ -44,9 +44,10 @@ Class Tournament
      *
      * @param string $id
      *
-     * @return Tournament
+     * @return TournamentObject
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get($id)
+    public function get(string $id): TournamentObject
     {
         $data = $this->api->request(sprintf('/tournaments/%s', $id))['data'];
 
@@ -57,8 +58,9 @@ Class Tournament
      * Get all tournaments
      *
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getAll()
+    public function getAll(): array
     {
         $data = $this->api->request('/tournaments');
 

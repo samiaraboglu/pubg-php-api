@@ -5,7 +5,7 @@ namespace Pubg\Object;
 Class Player
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -22,9 +22,9 @@ Class Player
     /**
      * Set id
      *
-     * @param int $id
+     * @param string $id
      */
-    public function setId($id)
+    public function setId(string $id)
     {
         $this->id = $id;
     }
@@ -32,9 +32,9 @@ Class Player
     /**
      * Get id
      *
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -44,7 +44,7 @@ Class Player
      *
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -54,7 +54,7 @@ Class Player
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -64,7 +64,7 @@ Class Player
      *
      * @param array $data
      */
-    public function setData($data)
+    public function setData(array $data)
     {
         $this->data = $data;
     }
@@ -74,7 +74,7 @@ Class Player
      *
      * @return array
      */
-    public function getData()
+    public function getData(): array
     {
         return $this->data;
     }

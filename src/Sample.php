@@ -27,9 +27,9 @@ Class Sample
      *
      * @param array $data
      *
-     * @return Sample
+     * @return SampleObject
      */
-    public function populate($data)
+    public function populate(array $data): SampleObject
     {
         $sample = new SampleObject();
 
@@ -42,11 +42,12 @@ Class Sample
     /**
      * Get the samples
      *
-     * @param string $filterCreatedAtStart
+     * @param string|null $filterCreatedAtStart
      *
-     * @return Sample
+     * @return SampleObject
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get($filterCreatedAtStart = null)
+    public function get(string $filterCreatedAtStart = null): SampleObject
     {
         $path = '/shards/{platform}/samples';
 

@@ -14,12 +14,12 @@ class Api
     protected $config;
 
     /**
-     * @var setEndpoint
+     * @var $endpoint
      */
     protected $endpoint;
 
     /**
-     * @var services
+     * @var $services
      */
     protected $services;
 
@@ -36,9 +36,9 @@ class Api
     /**
      * Set config
      *
-     * @param config $config
+     * @param Config $config
      */
-    public function setConfig($config)
+    public function setConfig(Config $config)
     {
         $this->config = $config;
     }
@@ -48,7 +48,7 @@ class Api
      *
      * @return Config
      */
-    public function getConfig()
+    public function getConfig(): Config
     {
         return $this->config;
     }
@@ -58,7 +58,7 @@ class Api
      *
      * @param string $endpoint
      */
-    public function setEndpoint($endpoint)
+    public function setEndpoint(string $endpoint)
     {
         $this->endpoint = $endpoint;
     }
@@ -68,7 +68,7 @@ class Api
      *
      * @return string
      */
-    public function getEndpoint()
+    public function getEndpoint(): string
     {
         return $this->endpoint;
     }
@@ -79,8 +79,9 @@ class Api
      * @param string $path
      *
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function request($path)
+    public function request(string $path): array
     {
         $endpoint = str_replace('{platform}', $this->config->getPlatform(), self::API_URL . $path);
 
@@ -102,8 +103,9 @@ class Api
      * @param string $name Service name
      *
      * @return object
+     * @throws \Exception
      */
-    public function __get($name)
+    public function __get(string $name): object
     {
         if (!in_array($name, ['click2'])) {
             $trace = debug_backtrace();
